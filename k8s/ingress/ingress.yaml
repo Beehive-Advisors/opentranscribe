@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: opentranscribe-backend
+  namespace: opentranscribe
+  annotations:
+    nginx.ingress.kubernetes.io/websocket-services: opentranscribe-backend
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - stt.beehive-advisors.com
+    secretName: opentranscribe-backend-tls
+  rules:
+  - host: stt.beehive-advisors.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: opentranscribe-backend
+            port:
+              number: 80
+

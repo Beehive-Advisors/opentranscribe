@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opentranscribe-backend
+  namespace: opentranscribe
+  labels:
+    app: opentranscribe-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opentranscribe-backend
+  template:
+    metadata:
+      labels:
+        app: opentranscribe-backend
+    spec:
+      containers:
+      - name: opentranscribe-backend
+        image: YOUR-DOCKERHUB-USERNAME/opentranscribe-backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: MODEL
+          value: "turbo"
+        - name: DEVICE
+          value: "cuda"
+        - name: COMPUTE_TYPE
+          value: "float16"
+        - name: LOG_LEVEL
+          value: "INFO"
+        resources:
+          requests:
+            cpu: 500m
+            memory: 2Gi
+            nvidia.com/gpu: 1
+          limits:
+            cpu: 4000m
+            memory: 8Gi
+            nvidia.com/gpu: 1
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+

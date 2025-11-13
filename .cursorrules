@@ -1,0 +1,5 @@
+'upstream' directories never contain code for the execution of the repository. Use them as REFERENCE only.
+
+If the user asks you to 'investigate' - your job is to get to the root cause of an issue with confirmation, using hard facts and proof. Utilize the internet, curl, running scripts, unit testing, and all actions available to you in the terminal (kubernetes for infra) to get to the root cause, but NEVER change a file when the user asks you to 'investigate'.
+
+Never run python locally. Use uv as your python package manager and always always always use a venv for python.

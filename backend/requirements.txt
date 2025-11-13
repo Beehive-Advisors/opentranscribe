@@ -1,0 +1,12 @@
+torch==2.5.1+cu121
+torchaudio==2.5.1
+--index-url https://download.pytorch.org/whl/cu121
+
+nvidia-cublas-cu12
+nvidia-cudnn-cu12==9.*
+faster-whisper
+RealtimeSTT
+fastapi
+uvicorn[standard]
+websockets
+
