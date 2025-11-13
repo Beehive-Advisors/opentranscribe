@@ -31,23 +31,12 @@ class STTService:
                 device=DEVICE,
                 compute_type=COMPUTE_TYPE,
                 use_microphone=False,  # We feed audio manually
-                enable_realtime_transcription=True,
-                on_recording_start=None,
-                on_recording_stop=None,
-                on_transcription_update=self._on_transcription_update if self.on_text_callback else None,
             )
             
             logger.info("RealtimeSTT recorder initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize RealtimeSTT recorder: {e}")
             raise
-    
-    def _on_transcription_update(self, text: str):
-        """Handle transcription updates from RealtimeSTT."""
-        if self.on_text_callback:
-            # RealtimeSTT provides interim transcriptions
-            # We'll treat all updates as interim unless explicitly marked final
-            self.on_text_callback(text, is_final=False)
     
     def feed_audio(self, audio_data: bytes):
         """
@@ -76,10 +65,22 @@ class STTService:
             return "", False
         
         try:
+            # Get current transcription text from recorder
             text = self.recorder.text()
-            # For now, we'll mark text as final if it's non-empty
-            # In a more sophisticated implementation, we'd track sentence boundaries
-            is_final = len(text.strip()) > 0
+            
+            # Track previous text to detect changes
+            if not hasattr(self, '_previous_text'):
+                self._previous_text = ""
+            
+            # If text changed, trigger callback
+            if text != self._previous_text and self.on_text_callback:
+                # Text is final if it ends with punctuation or is significantly longer
+                is_final = text.endswith(('.', '!', '?', '\n')) or len(text) > len(self._previous_text) + 10
+                self.on_text_callback(text, is_final)
+                self._previous_text = text
+            
+            # Return current text and final status
+            is_final = text.endswith(('.', '!', '?', '\n')) if text else False
             return text, is_final
         except Exception as e:
             logger.error(f"Error getting text: {e}")

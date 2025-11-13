@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Test script to validate faster-whisper turbo runs on GPU locally.
 
-This script validates Step 3.1 from plan.md:
+This script validates Step 3.1 from docs/planning/01-plan.md:
 - Install GPU PyTorch
 - Install CUDA libs and faster-whisper
 - Test that turbo model runs on GPU

@@ -16,9 +16,11 @@ This document outlines the monorepo structure for OpenTranscribe, a real-time sp
 ```
 opentranscribe/
 ├── README.md                          # Main project documentation
-├── plan.md                            # Implementation plan (existing)
-├── dockerhub-setup.md                 # CI/CD setup guide (existing)
-├── MONOREPO_STRUCTURE.md              # This file
+├── docs/
+│   ├── planning/                      # Planning documents (numbered chronologically)
+│   │   ├── 01-plan.md                 # Implementation plan
+│   │   ├── 02-dockerhub-setup.md      # CI/CD setup guide
+│   │   └── 03-monorepo-structure.md   # This file
 │
 ├── .github/
 │   └── workflows/
@@ -307,8 +309,8 @@ Following the plan.md rollout sequence:
 
 ## References
 
-- **plan.md**: Detailed implementation plan
-- **dockerhub-setup.md**: CI/CD pipeline setup
+- **docs/planning/01-plan.md**: Detailed implementation plan
+- **docs/planning/02-dockerhub-setup.md**: CI/CD pipeline setup
 - **RealtimeSTT Docs**: https://github.com/KoljaB/RealtimeSTT
 - **faster-whisper Docs**: https://github.com/guillaumekln/faster-whisper
 - **FastAPI WebSocket Docs**: https://fastapi.tiangolo.com/advanced/websockets/

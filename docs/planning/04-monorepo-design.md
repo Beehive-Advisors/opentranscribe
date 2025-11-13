@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This document explains the design decisions for structuring OpenTranscribe as a monorepo, integrating the requirements from `plan.md` with the CI/CD pipeline from `dockerhub-setup.md`.
+This document explains the design decisions for structuring OpenTranscribe as a monorepo, integrating the requirements from `docs/planning/01-plan.md` with the CI/CD pipeline from `docs/planning/02-dockerhub-setup.md`.
 
 ## Why Monorepo?
 
@@ -290,8 +290,8 @@ k8s/
 
 This monorepo structure provides:
 - ✅ Clear separation of backend, client, and infrastructure
-- ✅ Alignment with plan.md implementation steps
-- ✅ Integration with dockerhub-setup.md CI/CD pipeline
+- ✅ Alignment with docs/planning/01-plan.md implementation steps
+- ✅ Integration with docs/planning/02-dockerhub-setup.md CI/CD pipeline
 - ✅ Scalability path for future enhancements
 - ✅ Standard patterns for maintainability
 

@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: opentranscribe-runner
+    runs-on: arc-runner-set
     
     steps:
     - name: Checkout code

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Test script to validate RealtimeSTT integration with turbo model.
 
-This script validates Step 3.2 from plan.md:
+This script validates Step 3.2 from docs/planning/01-plan.md:
 - Install RealtimeSTT
 - Test AudioToTextRecorder with turbo model
 - Feed audio chunks and get transcriptions
@@ -56,7 +56,7 @@ def main():
     print("✅ RealtimeSTT integration test passed!")
     print("=" * 60)
     print("\nNote: Full audio testing requires PCM audio file input.")
-    print("      See plan.md Step 3.2 for complete testing workflow.")
+    print("      See docs/planning/01-plan.md Step 3.2 for complete testing workflow.")
 
 
 if __name__ == "__main__":

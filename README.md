@@ -94,11 +94,18 @@ opentranscribe/
 
 ## Documentation
 
+### User Guides
 - [Architecture](docs/architecture.md) - System architecture and design
 - [Deployment](docs/deployment.md) - Kubernetes deployment guide
 - [Development](docs/development.md) - Local development setup
-- [Monorepo Structure](MONOREPO_STRUCTURE.md) - Repository organization
-- [Monorepo Design](MONOREPO_DESIGN.md) - Design decisions
+
+### Planning & Implementation
+Planning documents are in `docs/planning/` numbered chronologically:
+- [01-plan.md](docs/planning/01-plan.md) - Original implementation plan
+- [02-dockerhub-setup.md](docs/planning/02-dockerhub-setup.md) - CI/CD pipeline setup
+- [03-monorepo-structure.md](docs/planning/03-monorepo-structure.md) - Repository organization
+- [04-monorepo-design.md](docs/planning/04-monorepo-design.md) - Design decisions
+- [05-16](docs/planning/) - Implementation and troubleshooting notes
 
 ## Technology Stack
 
@@ -221,7 +228,7 @@ Internal use only.
 
 ## References
 
-- [Implementation Plan](plan.md) - Detailed implementation plan
-- [CI/CD Setup](dockerhub-setup.md) - CI/CD pipeline configuration
+- [Implementation Plan](docs/planning/01-plan.md) - Detailed implementation plan
+- [CI/CD Setup](docs/planning/02-dockerhub-setup.md) - CI/CD pipeline configuration
 - [RealtimeSTT](https://github.com/KoljaB/RealtimeSTT) - STT library
 - [faster-whisper](https://github.com/guillaumekln/faster-whisper) - Whisper implementation
