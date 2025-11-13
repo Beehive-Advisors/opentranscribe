@@ -28,7 +28,7 @@ spec:
         - name: DEVICE
           value: "cuda"
         - name: COMPUTE_TYPE
-          value: "float16"
+          value: "float32"
         - name: LOG_LEVEL
           value: "INFO"
         resources:
